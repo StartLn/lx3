@@ -39,7 +39,7 @@ public class IpresenterImpl implements MvPInterface.IPresenter {
 
     @Override
     public void postData(String url, Map<String, String> headmap, Map<String, String> bodymap, Class aClass) {
-        imoudel.get(url, headmap, bodymap, aClass, new MvPInterface.MyCallback() {
+        imoudel.post(url, headmap, bodymap, aClass, new MvPInterface.MyCallback() {
             @Override
             public void setData(Object data) {
                 myView.success(data);
@@ -54,7 +54,7 @@ public class IpresenterImpl implements MvPInterface.IPresenter {
 
     @Override
     public void putData(String url, Map<String, String> headmap, Map<String, String> bodymap, Class aClass) {
-        imoudel.get(url, headmap, bodymap, aClass, new MvPInterface.MyCallback() {
+        imoudel.put(url, headmap, bodymap, aClass, new MvPInterface.MyCallback() {
             @Override
             public void setData(Object data) {
                 myView.success(data);
