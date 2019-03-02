@@ -63,7 +63,7 @@ public class RetrofitUtils {
 
     public RetrofitUtils post(String url, Map<String,String>headmap,Map<String,String>bodymap){
         myApiServer.post(url,headmap,bodymap)
-                  .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
         return RetrofitUtils.getInterface();
@@ -71,7 +71,7 @@ public class RetrofitUtils {
     public RetrofitUtils put(String url, Map<String,String>headmap,Map<String,String>bodymap){
         myApiServer.put(url,headmap,bodymap)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
         return RetrofitUtils.getInterface();
     }
