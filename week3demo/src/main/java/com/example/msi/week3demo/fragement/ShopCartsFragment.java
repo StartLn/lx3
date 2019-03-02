@@ -112,7 +112,7 @@ public class ShopCartsFragment<T> extends Fragment implements MvPInterface.MyVie
     private void startRequest() {
         Map<String, String> headermap = new HashMap<>();
         Map<String, String> map = new HashMap<>();
-        map.put("phone", "15835094241");
+        map.put("phone", "13852501387");
         map.put("pwd", "123456");
         iPresenter.postData(MyServerApi.BASE_LOGIN,headermap,map,LoginBean.class);
 
@@ -166,18 +166,19 @@ public class ShopCartsFragment<T> extends Fragment implements MvPInterface.MyVie
                 Map<String, String> headermaps = new HashMap<>();
                 Map<String, String> maps = new HashMap<>();
                 headermaps.put("userId", loginBean.getResult().getUserId()+"");
-                headermaps.put("sessionId", loginBean.getResult().getSessionId()+"");
+                headermaps.put("sessionId", loginBean.getResult().getSessionId());
                 iPresenter.getData(MyServerApi.BASE_SHOPCART, headermaps, maps, FindShoppingCartBean.class);
             }else{
                 Toast.makeText(getActivity(),loginBean.getMessage(),Toast.LENGTH_SHORT).show();
             }
-        }
-        if (data instanceof FindShoppingCartBean) {
+        }else if (data instanceof FindShoppingCartBean) {
             FindShoppingCartBean bean = (FindShoppingCartBean) data;
             if (bean.getStatus().equals("0000")) {
                 Toast.makeText(getActivity(),bean.getMessage(),Toast.LENGTH_SHORT).show();
                 cartBeans.addAll(bean.getResult());
                 shopCartAdapter.notifyDataSetChanged();
+            }else {
+                Toast.makeText(getActivity(),bean.getMessage(),Toast.LENGTH_SHORT).show();
             }
         }
     }
